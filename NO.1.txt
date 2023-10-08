@@ -1,0 +1,113 @@
+
+a. Depth first search
+The depth first search is a recursive algorithm for traversing a tree or a graph data structure
+It derives its name from the fact that it starts from the root node and follows each path to its 
+greatest depth node before moving to the next.
+The Depth first search is implemented using a stack data structure.
+The implementation of a depth first tree search and the depth first graph search is the same
+except that during the graph search, we keep track of the visited and unvisited nodes so that
+we dont end up in an infite loop while backtracking to join another path when we reach a dead end.
+
+Advantages
+It reasches less time to reach the goal node compared to Breadth first search algorithm.
+It requires very less memory as it only needs to store a stack of the nodes on the path from root
+node to the current node.
+
+Disadvantages
+DFS algorithm goes for deep down searching and sometimes it may go into an infinite loop.
+There is the possibility that many states keep re-occuring and there is no guarantee of finding
+the solution.
+
+b.	Breadth first search
+i.Just like its name, the breadth first search is an algorithm that searches for the 
+goal node breadth wise(horizontally). It starts its search from the root node and then checks
+the other successor nodes of the tree or graph level by level.
+The Breadth first search is implemented using the FIFO queue data structure.
+The implementation of a breadth first tree search and the breadth first graph search is the same
+except that during the graph search, we keep track of the visited and unvisited nodes so that
+we dont end up in an infite loop.
+
+Advantages
+BFS is always complete and provides a solution if any solution exists because it explores 
+each node level by level.
+It is optimal, it will provide the minimal solution which requires the least number of steps incase
+there are more than solution for the problem.
+
+Disadvantages
+It requires alot of memory since each level of the tree must be saved into memory to expand to the next level
+It needs alot of time if the solution is far away from the root node of the tree.
+
+
+
+c.Uniform Cost search
+Uniform cost search is an uninformed search algorithm whose main purpose is to find a path
+to the goal node that has the lowest cumulative cost.
+It is also known as the cheapest cost path because it traverses through the nodes of the tree 
+or graph depending starting with the ones with the least costs from the root node.
+Uniform cost search can only be carried out on a weighted tree or graph where different costs are 
+available for each edge.
+It is implemented using a priority queuein python.
+It works in a way that on each stage, the path with the least cost is always chosen and when there
+are more than one goal node, the algorithm continues until all paths to the goal nodes are found
+and then the one with the optimal cost is picked as the cheapest possible path.
+The primary difference between UCS applied to a graph and a tree lies in how they handle the 
+exploration of nodes and the management of visited nodes.
+In a tree structure, UCS operates without considering loops or cycles since trees, by definition, 
+do not contain cycles.
+Unforn Cost Search in a tree typically explores all reachable nodes without the need to keep track of visited nodes
+because there are no cycles to revisit.
+The algorithm continues to expand nodes based on their cumulative path cost from the root node, 
+effectively searching for the lowest-cost path without the risk of infinite loops.
+In a graph, UCS must account for the presence of cycles and the possibility of revisiting nodes. 
+Without proper management, it can get stuck in infinite loops.
+
+Advantages
+Uniform Cost search is optimal because at every state, the path with the least cost is chosen.
+UCS is complete. It will find the optimal solution as long as all step costs are non-negative.
+
+Disadvantages
+It may be stuck in an infinite loop as it diesnot care about the number of steps involved in searchingand only concerned about
+path cost.
+
+d.Greedy search algorithm
+Greedy search is an informed search algorithm that starts from the root node and then selects the 
+node that appears closest to the goal based on a heuristic function, without considering the path cost.
+It makes decisions based solely on the information available at the current state, 
+without considering the long-term consequences or the overall cost of the path.
+This means that the algorithm may aswel return the path with the highest cost to the goal node.
+The main disadvantage of the greedy search is that it is not optimal because of its not considering path costs.
+Just like in the above algorithms, the greedy search with graphs is the same as that in the
+tree search the only difference being that in graph search, greedy search requires maintaining a list of
+visited nodes to avoid loops which is not catered for in tree search since trees dont have cycles
+by default.
+
+Advantages
+The space complexity of greedy search is typically low, as it only needs to maintain a small amount of state information.
+
+Disadvantages
+Greedy search is not complete. It can get stuck in local optima and may not find a solution even if one exists.
+Greedy search is not guaranteed to be optimal. It may find a solution, but it's not guaranteed to be the best one.
+
+e. A*
+A* search is also an informed search algorithm that combines the advantages of Uniform Cost 
+Search and greedy search. It uses a priority queue based on the sum of the path cost from the root node and a heuristic function. 
+It explores nodes with the lowest summation of the path cost all the way from the root node 
+and the heuristic value. It then adds the visited node to the visited queue with its f(n) value.
+This node is only reconsidered for traversing if it is met with a lower f(n) value than the first 
+time it was visited otherwise it is ignored.
+The A* tree Search and graph search are the same except that in tree search the visited nodes are not
+tracked while in graph search, A* maintains a priority queue based on the sum of path cost and heuristic for each node. It also keeps
+track of visited nodes to avoid revisiting.
+
+Advantages
+A* search is complete if the heuristic is admissible i.e it never overestimates the true cost and the search space is finite meaning
+a solution is found if it exists.
+A* search is optimal if the heuristic is admissible, It guarantees finding the shortest path to the goal.
+
+Disadvantages
+The effectiveness of A* search relies heavily on the quality of the heuristic function used. If the heuristic is not well-designed or if
+it overestimates or underestimates the true cost to the goal, A* may not find the optimal solution.
+A* search can consume a significant amount of memory, especially when dealing with large search spaces or graphs. This is because it needs 
+to maintain a priority queue or open list to keep track of all the nodes it has encountered. In some cases, this high memory usage can 
+make A* impractical for certain applications.
+
